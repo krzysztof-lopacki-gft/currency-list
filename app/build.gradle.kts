@@ -34,6 +34,7 @@ android {
 
 dependencies {
     implementation(project(":features:currencies:data"))
+    implementation(project(":features:currencies:ui"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

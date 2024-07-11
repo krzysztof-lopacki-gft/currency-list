@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/demo_navigation"
+    app:startDestination="@id/demo_options">
+
+    <fragment
+        android:id="@+id/demo_options"
+        android:name="com.crypto.recruitmenttest.currencylist.ui.screens.example.DemoOptionsFragment"
+        tools:layout="@layout/fragment_demo_options">
+
+        <action
+            android:id="@+id/to_currency_list"
+            app:destination="@id/currency_list" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/currency_list"
+        android:name="com.crypto.recruitmenttest.currencylist.ui.screens.list.CurrencyListFragment"
+        tools:layout="@layout/fragment_currency_list" />
+
+</navigation>

@@ -14,7 +14,7 @@
         android:theme="@style/Theme.CurrencyList"
         tools:targetApi="31">
         <activity
-            android:name=".DemoActivity"
+            android:name=".currencylist.ui.screens.example.DemoActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
