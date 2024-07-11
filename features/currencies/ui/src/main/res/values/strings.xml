@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="demo_options_clear_data">Clear data</string>
+    <string name="demo_options_load_data">Load data</string>
+    <string name="demo_options_show_crypto_currencies">Crypto currencies</string>
+    <string name="demo_options_show_fiat_currencies">Fiat currencies</string>
+    <string name="demo_options_show_all_currencies">All currencies</string>
+</resources>
