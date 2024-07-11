@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -30,7 +31,15 @@ android {
 }
 
 dependencies {
+    implementation(project(":features:currencies:domain"))
+
+    implementation(platform(libs.koin.bom))
+    implementation(libs.koin.core)
+
     implementation(libs.androidx.core.ktx)
+    implementation(libs.moshi)
+    implementation(libs.moshi.kotlin)
+    ksp(libs.moshi.codegen)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
