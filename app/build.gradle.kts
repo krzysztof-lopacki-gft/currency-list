@@ -33,18 +33,12 @@ android {
 }
 
 dependencies {
+    implementation(project(":common:domain"))
+    implementation(project(":common:ui"))
+    implementation(project(":common:theme"))
+    implementation(project(":features:currencies:domain"))
     implementation(project(":features:currencies:data"))
     implementation(project(":features:currencies:ui"))
-
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    implementation(libs.androidx.activity)
-    implementation(libs.androidx.constraintlayout)
-
-    implementation(platform(libs.koin.bom))
-    implementation(libs.koin.core)
-    implementation(libs.koin.android)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

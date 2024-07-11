@@ -1,11 +1,10 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
-    id("kotlin-kapt")
 }
 
 android {
-    namespace = "com.crypto.recruitmenttest.currencylist.ui"
+    namespace = "com.crypto.recruitmenttest"
     compileSdk = 34
 
     defaultConfig {
@@ -34,11 +33,11 @@ android {
 }
 
 dependencies {
-    implementation(project(":common:theme"))
-    implementation(project(":common:ui"))
-    implementation(project(":features:currencies:domain"))
+    implementation(project(":common:domain"))
 
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    api(libs.androidx.navigation.fragment)
+    api(libs.androidx.navigation.ui)
+
+    api(platform(libs.koin.bom))
+    api(libs.koin.android)
 }

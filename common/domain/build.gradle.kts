@@ -9,5 +9,8 @@ java {
 }
 
 dependencies {
-    implementation(project(":common:domain"))
+    api(libs.coroutines.core)
+
+    api(platform(libs.koin.bom))
+    api(libs.koin.core)
 }
