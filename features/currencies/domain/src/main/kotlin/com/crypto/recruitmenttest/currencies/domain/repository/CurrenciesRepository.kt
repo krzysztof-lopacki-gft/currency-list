@@ -6,11 +6,15 @@ import com.crypto.recruitmenttest.currencies.domain.model.CurrencyType.Crypto
 import com.crypto.recruitmenttest.currencies.domain.model.CurrencyType.Fiat
 import com.crypto.recruitmenttest.currencies.domain.services.CurrenciesFetcher
 import com.crypto.recruitmenttest.currencies.domain.storage.CurrenciesStorage
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 
-class CurrenciesRepository(
+class CurrenciesRepository internal constructor(
     private val localCurrenciesStorage: CurrenciesStorage,
     private val remoteCurrenciesProvider: CurrenciesFetcher,
 ) {
+    private val mutex: Mutex = Mutex()
+
     /**
      * [INFO FOR REVIEWER]
      * In "a classic repository" approach:
@@ -23,23 +27,29 @@ class CurrenciesRepository(
      *
      * However, the recruitment task has different requirements - local storage has to be entirely managed by buttons in DemoActivity.
      */
-    suspend fun <T : Currency> getCurrencies(type: CurrencyType<out T>): List<T> = localCurrenciesStorage.getCurrencies(type)
+    suspend fun <T : Currency> getCurrencies(type: CurrencyType<out T>): List<T> = mutex.withLock {
+        localCurrenciesStorage.getCurrencies(type)
+    }
 
     /**
      * [INFO FOR REVIEWER]
      * In a "classic repository" approach, such a method is not required.
      * Rather, the `getCurrencies` method should have a `forceRefresh: Boolean` argument, which gives the possibility to skip the local cache/data source.
      */
-    suspend fun clear() = localCurrenciesStorage.clear()
+    suspend fun clear() = mutex.withLock {
+        localCurrenciesStorage.clear()
+    }
 
     /**
      * [INFO FOR REVIEWER]
      * In a "classic repository" approach, such a method is not required. Repository data should be loaded on-demand whenever `getCurrencies` is called
      * and `localCurrenciesStorage` is not populated yet. Check the comments on the `getCurrencies` method for more details.
      */
-    suspend fun loadData() {
-        localCurrenciesStorage.saveCurrencies(remoteCurrenciesProvider.fetchCurrencies(Fiat))
-        localCurrenciesStorage.saveCurrencies(remoteCurrenciesProvider.fetchCurrencies(Crypto))
+    suspend fun loadData() = mutex.withLock {
+        if (!localCurrenciesStorage.containsAnyData()) {
+            localCurrenciesStorage.saveCurrencies(remoteCurrenciesProvider.fetchCurrencies(Fiat))
+            localCurrenciesStorage.saveCurrencies(remoteCurrenciesProvider.fetchCurrencies(Crypto))
+        }
     }
 
 
