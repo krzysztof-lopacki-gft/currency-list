@@ -16,7 +16,7 @@ class FiatCurrencyDto(
     val symbol: String,
 
     @Json(name = "code")
-    val code: String
+    val code: String,
 ) {
     fun toDomain() = FiatCurrency(
         id = id,
