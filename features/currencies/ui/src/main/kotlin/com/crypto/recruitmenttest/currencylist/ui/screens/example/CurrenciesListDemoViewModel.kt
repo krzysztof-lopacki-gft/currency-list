@@ -3,13 +3,14 @@ package com.crypto.recruitmenttest.currencylist.ui.screens.example
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.crypto.recruitmenttest.common.ui.mvi.BaseMviViewModel
-import com.crypto.recruitmenttest.common.ui.mvi.ViewEffect
 import com.crypto.recruitmenttest.currencies.domain.model.CurrencyType
 import com.crypto.recruitmenttest.currencies.domain.usecases.ClearCurrenciesDataUseCase
 import com.crypto.recruitmenttest.currencies.domain.usecases.GetCurrenciesUseCase
 import com.crypto.recruitmenttest.currencies.domain.usecases.LoadCurrenciesDataUseCase
+import com.crypto.recruitmenttest.currencylist.ui.R
 import com.crypto.recruitmenttest.currencylist.ui.model.toCurrencyInfo
 import com.crypto.recruitmenttest.currencylist.ui.screens.example.CurrenciesListDemoNavigationEffect.NavigateToCurrenciesList
+import com.crypto.recruitmenttest.currencylist.ui.screens.example.CurrenciesListDemoViewEffect.ShowToast
 import com.crypto.recruitmenttest.currencylist.ui.screens.example.CurrenciesListDemoViewEvent.OnClearDataClicked
 import com.crypto.recruitmenttest.currencylist.ui.screens.example.CurrenciesListDemoViewEvent.OnLoadDataClicked
 import com.crypto.recruitmenttest.currencylist.ui.screens.example.CurrenciesListDemoViewEvent.OnShowAllCurrenciesClicked
@@ -27,7 +28,7 @@ internal class CurrenciesListDemoViewModel(
     private val clearCurrenciesData: ClearCurrenciesDataUseCase,
     private val loadCurrenciesData: LoadCurrenciesDataUseCase,
     private val getCurrencies: GetCurrenciesUseCase,
-) : BaseMviViewModel<CurrenciesListDemoViewState, CurrenciesListDemoViewEvent, CurrenciesListDemoNavigationEffect, ViewEffect>(
+) : BaseMviViewModel<CurrenciesListDemoViewState, CurrenciesListDemoViewEvent, CurrenciesListDemoNavigationEffect, CurrenciesListDemoViewEffect>(
     initialState = CurrenciesListDemoViewState(
         currenciesList = null
     )
@@ -42,8 +43,17 @@ internal class CurrenciesListDemoViewModel(
 
     override fun onEvent(event: CurrenciesListDemoViewEvent) {
         when(event) {
-            OnClearDataClicked -> launchInDbContext { clearCurrenciesData() }
-            OnLoadDataClicked -> launchInDbContext { loadCurrenciesData() }
+            OnClearDataClicked -> launchInDbContext {
+                clearCurrenciesData()
+                dispatchViewEffect(ShowToast(R.string.demo_options_on_data_cleared_message))
+            }
+            OnLoadDataClicked -> launchInDbContext {
+                if (loadCurrenciesData()) {
+                    dispatchViewEffect(ShowToast(R.string.demo_options_on_data_loaded_message))
+                } else {
+                    dispatchViewEffect(ShowToast(R.string.demo_options_on_data_already_loaded_message))
+                }
+            }
             OnShowCryptoCurrenciesClicked -> updateCurrenciesFilterAndNavigateToCurrenciesList(CurrencyFilter.CRYPTO)
             OnShowFiatCurrenciesClicked -> updateCurrenciesFilterAndNavigateToCurrenciesList(CurrencyFilter.FIAT)
             OnShowAllCurrenciesClicked -> updateCurrenciesFilterAndNavigateToCurrenciesList(CurrencyFilter.ALL)

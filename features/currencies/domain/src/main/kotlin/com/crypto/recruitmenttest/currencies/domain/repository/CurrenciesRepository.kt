@@ -45,12 +45,12 @@ class CurrenciesRepository internal constructor(
      * In a "classic repository" approach, such a method is not required. Repository data should be loaded on-demand whenever `getCurrencies` is called
      * and `localCurrenciesStorage` is not populated yet. Check the comments on the `getCurrencies` method for more details.
      */
-    suspend fun loadData() = mutex.withLock {
+    suspend fun loadData(): Boolean = mutex.withLock {
         if (!localCurrenciesStorage.containsAnyData()) {
             localCurrenciesStorage.saveCurrencies(remoteCurrenciesProvider.fetchCurrencies(Fiat))
             localCurrenciesStorage.saveCurrencies(remoteCurrenciesProvider.fetchCurrencies(Crypto))
+            return true
         }
+        return false
     }
-
-
 }

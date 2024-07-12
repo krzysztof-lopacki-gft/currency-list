@@ -6,6 +6,10 @@
     <string name="demo_options_show_fiat_currencies">Fiat currencies</string>
     <string name="demo_options_show_all_currencies">All currencies</string>
 
+    <string name="demo_options_on_data_cleared_message">Data cleared!</string>
+    <string name="demo_options_on_data_loaded_message">Data loaded!</string>
+    <string name="demo_options_on_data_already_loaded_message">Data already loaded!</string>
+
     <string name="currency_list_search_hint">Search</string>
     <string name="currency_list_title">Currencies</string>
     <string name="currency_list_no_data_info">There is no data\nto be shown</string>

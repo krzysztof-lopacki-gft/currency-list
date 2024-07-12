@@ -7,14 +7,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.navigation.fragment.NavHostFragment
 import com.crypto.recruitmenttest.common.ui.mvi.MviViewModel
-import com.crypto.recruitmenttest.common.ui.mvi.ViewEffect
 import com.crypto.recruitmenttest.currencylist.ui.databinding.ActivityDemoBinding
 import com.crypto.recruitmenttest.currencylist.ui.screens.list.CurrencyListView
 import kotlinx.coroutines.flow.map
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DemoActivity : AppCompatActivity() {
-    private val viewModel: MviViewModel<CurrenciesListDemoViewState, CurrenciesListDemoViewEvent, CurrenciesListDemoNavigationEffect, ViewEffect> by viewModel<CurrenciesListDemoViewModel>()
+    private val viewModel: MviViewModel<CurrenciesListDemoViewState, CurrenciesListDemoViewEvent, CurrenciesListDemoNavigationEffect, CurrenciesListDemoViewEffect> by viewModel<CurrenciesListDemoViewModel>()
     private lateinit var binding: ActivityDemoBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
