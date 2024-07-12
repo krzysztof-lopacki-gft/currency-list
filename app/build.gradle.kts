@@ -39,8 +39,4 @@ dependencies {
     implementation(project(":features:currencies:domain"))
     implementation(project(":features:currencies:data"))
     implementation(project(":features:currencies:ui"))
-
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
 }
