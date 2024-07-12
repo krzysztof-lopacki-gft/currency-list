@@ -19,6 +19,7 @@
     <fragment
         android:id="@+id/currency_list"
         android:name="com.crypto.recruitmenttest.currencylist.ui.screens.list.CurrencyListFragment"
+        android:label="@string/currency_list_title"
         tools:layout="@layout/fragment_currency_list" />
 
 </navigation>

@@ -2,5 +2,10 @@
 <resources>
     
     <dimen name="demo_options_button_width">300.dp</dimen>
-    
+
+    <dimen name="item_currency_list_padding">8dp</dimen>
+    <dimen name="item_currency_text_size">18sp</dimen>
+    <dimen name="item_currency_circle_right_margin">16dp</dimen>
+    <dimen name="item_currency_circle_size">48dp</dimen>
+
 </resources>

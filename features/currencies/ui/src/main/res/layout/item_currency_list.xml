@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="@dimen/item_currency_list_padding">
+
+    <TextView
+        android:id="@+id/currency_first_letter"
+        android:layout_width="@dimen/item_currency_circle_size"
+        android:layout_height="@dimen/item_currency_circle_size"
+        android:background="@drawable/circle"
+        android:gravity="center"
+        android:textColor="?attr/colorOnSecondary"
+        android:layout_marginEnd="@dimen/item_currency_circle_right_margin"
+        android:textSize="@dimen/item_currency_text_size"
+        tools:text="A" />
+
+    <TextView
+        android:id="@+id/currency_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:textSize="@dimen/item_currency_text_size"
+        tools:text="Person Name" />
+
+</LinearLayout>

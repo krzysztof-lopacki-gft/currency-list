@@ -27,15 +27,14 @@ class DemoOptionsFragment : Fragment(R.layout.fragment_demo_options) {
         super.onViewCreated(view, savedInstanceState)
 
         observeViewEvents()
-        handleNavigationEffects(viewModel, ::observeNavigationEffects)
+        handleNavigationEffects()
     }
 
-    private fun observeNavigationEffects(navigationEffect: CurrenciesListDemoNavigationEffect) {
+    private fun handleNavigationEffects() = handleNavigationEffects(viewModel) { navigationEffect ->
         when (navigationEffect) {
             NavigateToCurrenciesList -> findNavController().navigate(toCurrencyList())
         }
     }
-
 
     private fun observeViewEvents() {
         binding.demoOptionsClearData.setOnClickListener { viewModel.onEvent(OnClearDataClicked) }

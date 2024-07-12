@@ -5,4 +5,7 @@
     <string name="demo_options_show_crypto_currencies">Crypto currencies</string>
     <string name="demo_options_show_fiat_currencies">Fiat currencies</string>
     <string name="demo_options_show_all_currencies">All currencies</string>
+
+    <string name="currency_list_search_hint">Search</string>
+    <string name="currency_list_title">Currencies</string>
 </resources>
