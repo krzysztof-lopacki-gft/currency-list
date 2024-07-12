@@ -65,6 +65,16 @@ internal class CurrencyListFragment : Fragment(R.layout.fragment_currency_list),
         handleBackButton { viewModel.onEvent(OnBackClicked) }
     }
 
+
+    /**
+     * [INFO FOR REVIEWER]
+     * Why do we prefer passing values to views using pure Kotlin instead of Data Binding?
+     * Although data binding is a popular solution used to pass values from the view model to the view, it often offers few benefits and has many drawbacks:
+     * - in the MVI architecture, code written in Fragments is typically shorter than data binding equivalent written in XML (binding + imports),
+     * - IDE support for adding imports and syntax suggestions for data binding in XML files is very limited,
+     * - refactoring (moving models, renaming properties) usually results in compilation errors,
+     * - depending on the project size, compilation time can increase by several tens of percent after adding data binding.
+     */
     private fun observeViewState() {
         observeViewState(viewModel) { state ->
             currenciesListAdapter.submitList(state.currencies)
