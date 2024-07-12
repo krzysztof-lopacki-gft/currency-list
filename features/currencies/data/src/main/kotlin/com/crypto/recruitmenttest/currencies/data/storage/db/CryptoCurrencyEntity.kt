@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 import com.crypto.recruitmenttest.currencies.domain.model.CryptoCurrency
 
 @Entity(tableName = "crypto_currencies")
-class CryptoCurrencyEntity(
+internal class CryptoCurrencyEntity(
     @PrimaryKey(autoGenerate = true)
     val dbId: Long?,
     val id: String,

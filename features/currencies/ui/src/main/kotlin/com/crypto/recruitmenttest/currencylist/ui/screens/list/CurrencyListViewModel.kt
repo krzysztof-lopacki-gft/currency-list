@@ -22,7 +22,7 @@ import kotlinx.coroutines.flow.mapLatest
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.withContext
 
-class CurrencyListViewModel : BaseMviViewModel<CurrencyListViewState, CurrencyListViewEvent, CurrencyListNavigationEffect, ViewEffect>() {
+internal class CurrencyListViewModel : BaseMviViewModel<CurrencyListViewState, CurrencyListViewEvent, CurrencyListNavigationEffect, ViewEffect>() {
     private val dataSources: MutableStateFlow<Flow<List<CurrencyInfo>?>> = MutableStateFlow(flow { emit(null) })
     private val searchQuery = MutableStateFlow("")
 

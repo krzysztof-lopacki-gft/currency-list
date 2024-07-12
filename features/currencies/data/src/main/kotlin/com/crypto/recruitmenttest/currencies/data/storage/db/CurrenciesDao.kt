@@ -7,7 +7,7 @@ import androidx.room.Query
 import androidx.room.Transaction
 
 @Dao
-interface CurrenciesDao {
+internal interface CurrenciesDao {
 
     @Query("SELECT * FROM crypto_currencies")
     fun getCryptoCurrencies(): List<CryptoCurrencyEntity>

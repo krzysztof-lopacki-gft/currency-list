@@ -19,7 +19,7 @@ import com.crypto.recruitmenttest.currencylist.ui.screens.example.CurrenciesList
 import com.crypto.recruitmenttest.currencylist.ui.screens.example.DemoOptionsFragmentDirections.Companion.toCurrencyList
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
-class DemoOptionsFragment : Fragment(R.layout.fragment_demo_options) {
+internal class DemoOptionsFragment : Fragment(R.layout.fragment_demo_options) {
     private val viewModel: MviViewModel<CurrenciesListDemoViewState, CurrenciesListDemoViewEvent, CurrenciesListDemoNavigationEffect, ViewEffect> by activityViewModel<CurrenciesListDemoViewModel>()
     private val binding by viewBinding(FragmentDemoOptionsBinding::bind)
 

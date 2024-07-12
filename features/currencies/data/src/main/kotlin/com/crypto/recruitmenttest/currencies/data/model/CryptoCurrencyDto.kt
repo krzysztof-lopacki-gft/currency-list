@@ -5,7 +5,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-class CryptoCurrencyDto(
+internal class CryptoCurrencyDto(
     @Json(name = "id")
     val id: String,
 

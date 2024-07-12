@@ -28,7 +28,7 @@ import com.crypto.recruitmenttest.currencylist.ui.screens.list.adapter.CurrencyL
 import kotlinx.coroutines.flow.Flow
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class CurrencyListFragment : Fragment(R.layout.fragment_currency_list), CurrencyListView {
+internal class CurrencyListFragment : Fragment(R.layout.fragment_currency_list), CurrencyListView {
     private val viewModel: MviViewModel<CurrencyListViewState, CurrencyListViewEvent, CurrencyListNavigationEffect, ViewEffect> by viewModel<CurrencyListViewModel>()
     private val binding by viewBinding(FragmentCurrencyListBinding::bind)
     private val currenciesListAdapter = CurrencyListAdapter()

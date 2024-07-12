@@ -14,7 +14,7 @@ import com.crypto.recruitmenttest.currencies.domain.model.CurrencyType.Fiat
 import com.crypto.recruitmenttest.currencies.domain.model.FiatCurrency
 import com.crypto.recruitmenttest.currencies.domain.storage.CurrenciesStorage
 
-class RoomCurrenciesStorage(
+internal class RoomCurrenciesStorage(
     applicationContext: Context
 ) : CurrenciesStorage {
     private val dao: CurrenciesDao = Room

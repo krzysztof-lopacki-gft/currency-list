@@ -22,7 +22,7 @@ import kotlinx.coroutines.launch
 
 private const val CURRENCY_FILTER_KEY = "CurrenciesListDemoViewModel.currencyFilter"
 
-class CurrenciesListDemoViewModel internal constructor(
+internal class CurrenciesListDemoViewModel(
     savedStateHandle: SavedStateHandle,
     private val clearCurrenciesData: ClearCurrenciesDataUseCase,
     private val loadCurrenciesData: LoadCurrenciesDataUseCase,
