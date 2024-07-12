@@ -17,6 +17,12 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
 /**
+ * [INFO FOR REVIEWER]
+ * The following class/methods are copied from libraries created by GFT and used in our projects.
+ * GFT plans to release these libraries under an Open Source license soon.
+ */
+
+/**
  * Creates a `StateFlow` backed by the current `Flow`.
  * Although this extension seems similar to [stateIn], there are noticeable differences in the behavior of the returned [StateFlow].
  * The [StateFlow] returned from this method:

@@ -4,6 +4,12 @@ import com.crypto.recruitmenttest.common.domain.model.ConsumableEvent
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
+/**
+ * [INFO FOR REVIEWER]
+ * The following class/methods are copied from libraries created by GFT and used in our projects.
+ * GFT plans to release these libraries under an Open Source license soon.
+ */
+
 interface MviViewModel<VS : ViewState, EV : ViewEvent, NE : NavigationEffect, VE : ViewEffect> {
     val viewStates: StateFlow<VS>
     val viewEffects: StateFlow<ConsumableEvent<VE>?>

@@ -6,6 +6,12 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import kotlinx.coroutines.launch
 
+/**
+ * [INFO FOR REVIEWER]
+ * The following class/methods are copied from libraries created by GFT and used in our projects.
+ * GFT plans to release these libraries under an Open Source license soon.
+ */
+
 fun <NE : NavigationEffect> Fragment.handleNavigationEffects(
     viewModel: MviViewModel<*, *, NE, *>,
     consumer: (NE) -> Unit

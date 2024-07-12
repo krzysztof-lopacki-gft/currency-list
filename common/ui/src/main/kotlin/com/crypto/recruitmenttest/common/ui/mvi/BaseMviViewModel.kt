@@ -12,6 +12,11 @@ import java.util.Optional
 
 private const val VIEW_STATE_KEY = "MviViewMode.viewState"
 
+/**
+ * [INFO FOR REVIEWER]
+ * The following class/methods are copied from libraries created by GFT and used in our projects.
+ * GFT plans to release these libraries under an Open Source license soon.
+ */
 abstract class BaseMviViewModel<VS : ViewState, EV : ViewEvent, NE : NavigationEffect, VE : ViewEffect> private constructor(
     private val initialState: Optional<VS>,
     private val savedStateHandle: SavedStateHandle? = null,

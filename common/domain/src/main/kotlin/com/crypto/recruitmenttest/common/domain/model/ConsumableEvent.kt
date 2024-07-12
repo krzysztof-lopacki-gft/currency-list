@@ -1,5 +1,10 @@
 package com.crypto.recruitmenttest.common.domain.model
 
+/**
+ * [INFO FOR REVIEWER]
+ * The following class/methods are copied from libraries created by GFT and used in our projects.
+ * GFT plans to release these libraries under an Open Source license soon.
+ */
 class ConsumableEvent<T> (private val payload: T) {
     /**
      * States whether the event has been consumed already.

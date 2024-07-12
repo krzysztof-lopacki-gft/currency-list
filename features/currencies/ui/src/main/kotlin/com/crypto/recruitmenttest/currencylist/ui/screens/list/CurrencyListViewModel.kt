@@ -54,6 +54,16 @@ internal class CurrencyListViewModel : BaseMviViewModel<CurrencyListViewState, C
         }
     }
 
+    /**
+     * [INFO FOR REVIEWER]
+     * In the times when using ListView was popular, filtering was often implemented directly within ArrayAdapter,
+     * which implemented the Filterable interface. Using this interface, a Filter object was returned
+     * and it was responsible for the filtering logic and managing the threads on which these operations took place.
+     * It was quite a simple and effective solution, but from an architectural point of view,
+     * it is not consistent with the ViewModel pattern, where the ViewModel is fully responsible for preparing the data for the view
+     * and the view only displays the passed data.
+     * This is even more noticeable in Compose, where the ViewModel maintains even the state used by, for example, text input.
+     */
     private suspend fun List<CurrencyInfo>.filterCurrencies(query: String): List<CurrencyInfo> {
         if (query.isEmpty()) return this
         return withContext(Dispatchers.IO) {
