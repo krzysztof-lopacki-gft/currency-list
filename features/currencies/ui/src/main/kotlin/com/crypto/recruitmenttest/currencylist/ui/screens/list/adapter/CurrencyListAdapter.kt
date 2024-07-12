@@ -22,7 +22,7 @@ internal class CurrencyListAdapter : ListAdapter<CurrencyInfo, CurrencyListAdapt
 
 
     internal class CurrencyListItemViewHolder(
-        private val itemView: View,
+        itemView: View,
     ) : RecyclerView.ViewHolder(itemView) {
         private val binding: ItemCurrencyListBinding = ItemCurrencyListBinding.bind(itemView)
 

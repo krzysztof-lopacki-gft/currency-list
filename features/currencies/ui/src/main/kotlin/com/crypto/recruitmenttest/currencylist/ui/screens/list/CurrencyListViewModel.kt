@@ -3,12 +3,11 @@ package com.crypto.recruitmenttest.currencylist.ui.screens.list
 import androidx.lifecycle.viewModelScope
 import com.crypto.recruitmenttest.common.ui.mvi.BaseMviViewModel
 import com.crypto.recruitmenttest.common.ui.mvi.ViewEffect
-import com.crypto.recruitmenttest.currencies.domain.model.FiatCurrency
 import com.crypto.recruitmenttest.currencylist.ui.model.CurrencyInfo
 import com.crypto.recruitmenttest.currencylist.ui.screens.list.CurrencyListNavigationEffect.NavigateBack
 import com.crypto.recruitmenttest.currencylist.ui.screens.list.CurrencyListViewEvent.OnBackClicked
 import com.crypto.recruitmenttest.currencylist.ui.screens.list.CurrencyListViewEvent.OnSearchQueryUpdated
-import com.gft.mvi.coroutines.toViewStates
+import com.crypto.recruitmenttest.common.ui.mvi.toViewStates
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi

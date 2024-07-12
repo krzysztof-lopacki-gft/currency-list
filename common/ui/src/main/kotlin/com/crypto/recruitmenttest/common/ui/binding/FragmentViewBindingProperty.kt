@@ -39,5 +39,5 @@ fun interface ViewBinder<T : ViewBinding> {
 /**
  * Create new [ViewBinding] associated with the [Fragment][this]
  */
-@Suppress("unused")
+@Suppress("UnusedReceiverParameter")
 fun <T : ViewBinding> Fragment.viewBinding(vb: ViewBinder<T>): ReadOnlyProperty<Fragment, T> = FragmentViewBindingProperty(vb)
