@@ -8,4 +8,6 @@
     <dimen name="item_currency_circle_right_margin">16dp</dimen>
     <dimen name="item_currency_circle_size">48dp</dimen>
 
+    <dimen name="currency_list_info_text_size">18sp</dimen>
+
 </resources>

@@ -8,4 +8,6 @@
 
     <string name="currency_list_search_hint">Search</string>
     <string name="currency_list_title">Currencies</string>
+    <string name="currency_list_no_data_info">There is no data\nto be shown</string>
+    <string name="currency_list_no_results_info">No results</string>
 </resources>

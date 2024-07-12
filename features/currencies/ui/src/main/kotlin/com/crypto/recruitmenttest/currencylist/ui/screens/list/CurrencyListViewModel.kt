@@ -32,12 +32,15 @@ internal class CurrencyListViewModel : BaseMviViewModel<CurrencyListViewState, C
         .combine(searchQuery) { currencies, query -> currencies to query }
         .mapLatest { data -> CurrenciesData(data.first, data.first?.filterCurrencies(data.second)) }
         .map { currenciesData ->
-            CurrencyListViewState(
-                isLoadingIndicatorVisible = currenciesData.currencies == null,
-                isNoDataInfoVisible = currenciesData.currencies?.isEmpty() == true,
-                isEmptySearchResultInfoVisible = currenciesData.filteredCurrencies?.isEmpty() == true,
-                currencies = currenciesData.filteredCurrencies ?: emptyList()
-            )
+            with (currenciesData) {
+                CurrencyListViewState(
+                    isLoadingIndicatorVisible = currencies == null,
+                    isNoDataInfoVisible = currencies?.isEmpty() == true,
+                    isNoResultsInfoVisible = currencies?.isEmpty() == false && filteredCurrencies?.isEmpty() == true,
+                    currencies = filteredCurrencies ?: emptyList()
+                )
+            }
+
         }
         .toViewStates(CurrencyListViewState(), viewModelScope)
 

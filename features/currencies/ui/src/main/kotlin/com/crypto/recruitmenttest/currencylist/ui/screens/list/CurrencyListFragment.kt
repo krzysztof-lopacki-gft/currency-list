@@ -8,6 +8,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuProvider
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -67,6 +68,9 @@ internal class CurrencyListFragment : Fragment(R.layout.fragment_currency_list),
     private fun observeViewState() {
         observeViewState(viewModel) { state ->
             currenciesListAdapter.submitList(state.currencies)
+            binding.loadingIndicator.isVisible = state.isLoadingIndicatorVisible
+            binding.noDataInfo.isVisible = state.isNoDataInfoVisible
+            binding.noResultsInfo.isVisible = state.isNoResultsInfoVisible
         }
     }
 

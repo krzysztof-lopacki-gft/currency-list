@@ -10,7 +10,7 @@ internal data class CurrencyListViewState(
     val currencies: List<CurrencyInfo> = emptyList(),
     val isLoadingIndicatorVisible: Boolean = true,
     val isNoDataInfoVisible: Boolean = false,
-    val isEmptySearchResultInfoVisible: Boolean = false
+    val isNoResultsInfoVisible: Boolean = false
 ) : ViewState
 
 internal sealed interface CurrencyListViewEvent : ViewEvent {
