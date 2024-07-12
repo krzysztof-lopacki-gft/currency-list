@@ -51,7 +51,7 @@ internal class CurrencyListFragment : Fragment(R.layout.fragment_currency_list),
     private fun setupToolbar() {
         with(requireActivity() as AppCompatActivity) {
             setSupportActionBar(binding.toolbar)
-            addMenuProvider(CurrencyListMenuProvider(OnSearchQueryHandler()), viewLifecycleOwner)
+            addMenuProvider(CurrencyListMenuProvider(OnQueryTextListener()), viewLifecycleOwner)
             binding.toolbar.setNavigationOnClickListener { viewModel.onEvent(OnBackClicked) }
         }
     }
@@ -64,7 +64,6 @@ internal class CurrencyListFragment : Fragment(R.layout.fragment_currency_list),
     private fun setupBackButton() {
         handleBackButton { viewModel.onEvent(OnBackClicked) }
     }
-
 
     /**
      * [INFO FOR REVIEWER]
@@ -90,7 +89,7 @@ internal class CurrencyListFragment : Fragment(R.layout.fragment_currency_list),
         }
     }
 
-    private inner class OnSearchQueryHandler : SearchView.OnQueryTextListener {
+    private inner class OnQueryTextListener : SearchView.OnQueryTextListener {
         init {
             viewModel.onEvent(OnSearchQueryUpdated(""))
         }
@@ -107,13 +106,13 @@ internal class CurrencyListFragment : Fragment(R.layout.fragment_currency_list),
     }
 
     private class CurrencyListMenuProvider(
-        private val onQueryListener: SearchView.OnQueryTextListener,
+        private val onQueryTextListener: SearchView.OnQueryTextListener,
     ) : MenuProvider {
         override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
             menuInflater.inflate(R.menu.currency_list_menu, menu)
             with(menu.findItem(R.id.action_search).actionView as SearchView) {
                 queryHint = resources.getString(R.string.currency_list_search_hint)
-                setOnQueryTextListener(onQueryListener)
+                setOnQueryTextListener(onQueryTextListener)
             }
         }
 
